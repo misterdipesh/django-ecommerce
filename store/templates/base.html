@@ -1,0 +1,77 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.user{
+color:white;
+font-size:20px;
+padding:2px 2px;
+
+}
+.main{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+#main1{
+padding: 5px 5px 5px 5px;
+margin:5px 5px 5px 5px;
+}
+</style>
+</head>
+<body>
+
+<ul>
+    <li><p class="user">   Ecommerce site   </p></li>
+   <li><a class="active" href={% url 'home' %}>Home</a></li>
+    <li><a class="active" href={% url 'about' %}>About</a></li>
+    {%if not user.is_authenticated%}
+    <li><a href="{% url 'register' %}">Register</a></li>
+    {%endif%}
+    {% if user.is_authenticated%}
+    <li><a href= "{% url 'logout' %}">Logout</a></li>
+    <li><p class="user">Welcome,{{user.first_name}}</p></li>
+    {%endif%}
+    <li>
+        <form action="" method="get">
+            <div class="input-group">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" name="search" />
+          <input type="submit" class="btn btn-outline-primary" value="Search">
+            </div>
+        </form>
+    </li>
+
+
+</ul>
+<div>{%block content%}
+    {%endblock%}
+</div>
+
+</body>
+</html>

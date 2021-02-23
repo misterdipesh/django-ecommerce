@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{%load widget_tweaks %}
+<!--{%block content %}-->
+<!--<script>-->
+<!--  function check(){-->
+<!--    let pass1=document.getElementById('password1')-->
+<!--    let pass2=document.getElementById('password1')-->
+<!--    if (pass1!=pass2){-->
+<!--    document.getElementById('error').innerText('Password not matched')-->
+<!--    }-->
+<!--  }-->
+
+
+<!--</script>-->
+<div class ="main">
+        <form action="" method="POST">{%csrf_token%}
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="firstname">First Name</label>
+                <div class="form-row" ></div>
+              {% render_field form.first_name class="form-control" placeholder="First Name" id="firstname" %}
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastname">Last Name</label>
+              {% render_field form.last_name class="form-control" placeholder="Last Name" id="lastname" %}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+                <div class="form-row" ></div>
+              {% render_field form.email class="form-control" placeholder="Email" id="email" %}
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="contact">Contact</label>
+              {% render_field form.contact class="form-control" placeholder="Phone number" id="contact" %}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="username">Username</label>
+                <div class="form-row" ></div>
+              {% render_field form.username class="form-control" placeholder="Username" id="username" %}
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="address">Address</label>
+              {% render_field form.address class="form-control" placeholder="Street 12" id="address" %}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="password">Password</label>
+                <div class="form-row" ></div>
+              {% render_field form.password1 class="form-control" placeholder="Password" id="password1" %}
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="password2">Confirm Password</label>
+              {% render_field form.password2 class="form-control" placeholder="Confirm Password" id="password2"%}
+            </div>
+
+          </div>
+          <p style="color:red" id="error"></p>
+
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+</div>
+
+
+{%endblock%}
