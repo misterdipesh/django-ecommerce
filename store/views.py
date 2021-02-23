@@ -28,6 +28,7 @@ def home(request):
         Items=Product.objects.all()
     else:
         Items=Product.objects.all().filter(product_name=search_value)
+        print(Items)
     context={'Items':Items,'user':request.user}
     return render(request,'index.html',context)
 def register(request):
